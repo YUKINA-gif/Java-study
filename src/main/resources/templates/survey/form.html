@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">タイトル</title>
+</head>
+<body>
+	<h1 th:text="${title}">タイトル</h1>
+	<h2 th:text="${complete}"></h2>
+	<div>
+		<form action="#" method="post" th:action="@{/survey/confirm}" th:object="${surveyForm}">
+			<label for="age">年齢</label>
+			<input type="number" id="age" name="age" th:value="*{age}"><br>
+			<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+			<label for="satisfaction">満足度</label>
+			<label for="satisfaction">1</label>
+			<input type="radio" value="1" name="satisfaction" id="satisfaction" th:checked="*{satisfaction == 1}">
+			<label for="satisfaction-2">2</label>
+			<input type="radio" value="2" name="satisfaction" id="satisfaction-2" th:checked="*{satisfaction == 2}">
+			<label for="satisfaction-3">3</label>
+			<input type="radio" value="3" name="satisfaction" id="satisfaction-3" th:checked="*{satisfaction == 3}">
+			<label for="satisfaction-4">4</label>
+			<input type="radio" value="4" name="satisfaction" id="satisfaction-4" th:checked="*{satisfaction == 4}">
+			<label for="satisfaction-5">5</label>
+			<input type="radio" value="5" name="satisfaction" id="satisfaction-5" th:checked="*{satisfaction == 5}"><br>
+			<div th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"></div>
+			<label for="comment">コメント</label>
+			<textarea rows="3" cols="40" id="comment" name="comment" th:field="*{comment}"></textarea><br>
+			<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+			<input type="submit" value="確認">
+		</form>	
+	</div>
+</body>
+</html>
